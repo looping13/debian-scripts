@@ -4,7 +4,7 @@
 #https://github.com/ful1e5/Bibata_Cursor/releases
 cd ~/Downloads
 
-#Uninstall previous intll
+#Uninstall previous install
 #rm ~/.icons/Bibata-*                  # Remove from local users
 sudo rm /usr/share/icons/Bibata-*     # Remove from all users
 
