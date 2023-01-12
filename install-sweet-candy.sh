@@ -10,8 +10,8 @@ git clone https://github.com/EliverLara/Sweet-folders.git ~/Projects/sweet
 # sed -i 's/Inherits=/Inherits=candy-icons,/g' ~/Projects/sweet/Sweet-Rainbow/index.theme
 
 #uninstall previous for all users
-sudo rm /usr/share/icons/candy*
-sudo rm /usr/share/icons/Sweet*
+sudo rm -rf /usr/share/icons/candy*
+sudo rm -rf /usr/share/icons/Sweet*
 
 #install new for all users
 sudo mv candy* /usr/share/icons/    # Install to all users
