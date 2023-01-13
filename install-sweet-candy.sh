@@ -27,8 +27,8 @@ rm -rf ~/Projects/candy-icons
 rm -rf ~/Projects/Sweet*
 
 gsettings set org.gnome.desktop.interface icon-theme Sweet-Rainbow
-gsettings set org.gnome.desktop.interface gtk-theme "Sweet"
-gsettings set org.gnome.desktop.wm.preferences theme "Sweet"
+#gsettings set org.gnome.desktop.interface gtk-theme "Sweet"
+#gsettings set org.gnome.desktop.wm.preferences theme "Sweet"
 
 echo "################################################################"
 echo "###################    T H E   E N D      ######################"
