@@ -5,7 +5,7 @@
 cd ~/Downloads
 
 #Uninstall previous install
-#rm ~/.icons/BeautyLine                   # Remove from local users
+#rm -rf ~/.icons/BeautyLine                   # Remove from local users
 sudo rm -rf /usr/share/icons/BeautyLine     # Remove from all users
 
 
