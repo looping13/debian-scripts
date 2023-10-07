@@ -1,0 +1,17 @@
+## install package for  i2c-tools
+sudo apt install i2c-tools
+sudo pqcman -S i2c-tools
+
+## load the module eeprom
+sudo modprobe eeprom
+
+## read the dimm data with this command
+decode-dimms
+
+Once we know the DDR4-speed and timings,
+we can estimate the latency using the following equation:
+
+Absolute latency = (CAS latency*2000) / Frequency 
+
+ex: CAS 16 at 2400 MHz
+ 16 * 2000 / 2400 = 13.3ms
