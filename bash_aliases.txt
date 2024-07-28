@@ -1,0 +1,14 @@
+## my aliases for Debian
+
+## Nala to replace apt
+alias update='sudo nala update && nala list --upgradable' 
+alias upgrade='sudo nala upgrade'
+alias install='sudo nala install'
+alias remove='sudo nala remove'
+
+
+## Reboot
+alias reboot='sudo reboot now'
+
+## Meteo
+alias meteo='curl wttr.in/Paris'

@@ -10,7 +10,7 @@ sudo rm /usr/share/icons/Bibata-*     # Remove from all users
 
 
 #Install Bibata cursor
-tar -xvf Bibata.tar.gz                # extract `Bibata.tar.gz`
+tar -xvf Bibata.tar.xz                # extract `Bibata.tar.gz` edit: xz extension now. Check it
 #mv Bibata-* ~/.icons/                 # Install to local users
 sudo mv Bibata-* /usr/share/icons/    # Install to all users
 
