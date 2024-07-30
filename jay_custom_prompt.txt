@@ -31,20 +31,28 @@ or this is mine replacing job with username ans squared lines with nice rounded 
 
 tty -s && export PS1="$LINE_COLOR$ARC_UPPER_CORNER$LINE_STRAIGHT$LINE_STRAIGHT$BRACKET_COLOR[$CLOCK_COLOR\t$BRACKET_COLOR]$LINE_COLOR$LINE_STRAIGHT$BRACKET_COLOR[$JOB_COLOR\u$BRACKET_COLOR]$LINE_COLOR$LINE_STRAIGHT$BRACKET_COLOR[\H:\]$PATH_COLOR\w$BRACKET_COLOR]\n$LINE_COLOR$ARC_BOTTOM_CORNER$LINE_STRAIGHT$LINE_STRAIGHT$LINE_VERTICAL_LEFT\[$(tput sgr0)\] "
 
-Find the hex unicode of the special character on this website
+# Find the hex unicode of the special character on this website
 https://www.obliquity.com/computer/html/unicode2500.html
 
-Then convert from Hex code to Octal UTF-8 bytes with this site
+# Then convert from Hex code to Octal UTF-8 bytes with this site
 https://www.cogsci.ed.ac.uk/~richard/utf-8.cgi
 
-OR
+# OR
 
-Since bash 4.2, you can use \u followed by 4 hexadecimal digits in a $'…' string.
+# Since bash 4.2, you can use \u followed by 4 hexadecimal digits in a $'…' string.
 
-  PS1=$'\\[\e[31m\\]\u2234\\[\e[0m\\]\n\u2192 \u263f \\~ \\[\e[31m\\]\u2605 $? \\[\e[0m\\]'
+#  PS1=$'\\[\e[31m\\]\u2234\\[\e[0m\\]\n\u2192 \u263f \\~ \\[\e[31m\\]\u2605 $? \\[\e[0m\\]'
 
-MY FINAL ONE no constant 
+#MY FINAL ONE no constant 
 PS1=$'\u256D\u2500\u2500\[\e[38;5;196m\]\u\[\e[38;5;202m\]@\[\e[38;5;208m\]\h \[\e[38;5;220m\]\w \n\[\e[0m\]\u2570\u2500\u2524$ '
+
+#color scheme
+https://robotmoon.com/bash-prompt-generator/
+
+the very last with colored background and powerline from nerd font
+PS1=$'\u256D\u2500\u2500\[\e[38;5;196m\]\uE0B6\[\e[38;5;255;48;5;196m\]\u\[\e[38;5;196;48;5;202m\]\uE0B4\[\e[38;5;255;48;5;202m\] @ \h\[\e[38;5;202;48;5;0m\]\uE0B4\[\e[38;5;220;48;5;0m\]\uE0B6\[\e[38;5;0;48;5;220m\]\w \[\e[38;5;220;48;5;0m\]\uE0B4\[\e[0m\]\n\[\e[0m\]\u2570\u2500\u2524$ '
+
+
 
 
 
