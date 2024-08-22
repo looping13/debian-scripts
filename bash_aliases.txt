@@ -12,3 +12,14 @@ alias reboot='sudo reboot now'
 
 ## Meteo
 alias meteo='curl wttr.in/Paris'
+
+## exa to replace ls
+if  [ -x "$(command -v exa)" ]; then
+  alias ls='exa --icons'
+  alias la='exa -a --icons'
+  alias ll='exa -al --header --icons --git'
+else
+  echo 'Error: exa is not installed.' >&2
+  exit 1
+fi
+
