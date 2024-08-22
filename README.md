@@ -10,3 +10,6 @@ but first download the latest release from [here](https://www.opendesktop.org/s/
 
 One script to install [Sweet-folders](https://github.com/EliverLara/Sweet-folders) icons and [Sweet GTK theme](https://github.com/EliverLara/Sweet), and combine with [Candy-icons](https://github.com/EliverLara/candy-icons) for a great look.
 
+Adding also some aliases and a bash prompt
+The bash prompt will require a nerd font installed
+

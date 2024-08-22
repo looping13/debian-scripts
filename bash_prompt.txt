@@ -1,0 +1,17 @@
+#Adding git support from the git-core package
+source /etc/bash_completion.d/git-prompt
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWSTASHSTATE=1
+# and add this snippet to PS1 to get the status
+# $(__git_ps1 "(%s)")
+
+# create the file ~/home/.bash_prompt and place the following inside:
+
+tty -s && export PS1=$'\u256D\u2500\u2500\[\e[1;38;5;196m\]\uE0B6\[\e[38;5;255;48;5;196m\]\uF007 \u\[\e[38;5;196;48;5;202m\]\uE0B4\[\e[38;5;255;48;5;202m\] \uF4A9 \h\[\e[0;38;5;202;48;5;0m\]\uE0B4\[\e[38;5;220;48;5;0m\]\uE0B6\[\e[38;5;0;48;5;220m\]\w  $(__git_ps1 "(%s)") \[\e[38;5;220;48;5;0m\]\uE0B4\[\e[0m\]\n\[\e[0m\]\u2570\u2500\u2524$ '
+
+#Save that file, and then open up your ~/.bashrc and place the following at the end of the file:
+
+#  source ~/.bash_prompt
+
+#The next terminal window you open should use the new prompt.
