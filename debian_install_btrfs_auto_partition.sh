@@ -41,7 +41,7 @@ echo "uuid=$disk_uuid / btrfs noatime,compress=zstd,subvol=@ 0 0" >> /target/etc
 echo "uuid=$disk_uuid /home btrfs noatime,compress=zstd,subvol=@home 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /root btrfs noatime,compress=zstd,subvol=@root 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /var/log btrfs noatime,compress=zstd,subvol=@log 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /tmp btrfs noatime,compress=zstd,subvol=@tmmp 0 0" >> /target/etc/fstab
+echo "uuid=$disk_uuid /tmp btrfs noatime,compress=zstd,subvol=@tmp 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /opt btrfs noatime,compress=zstd,subvol=@opt 0 0" >> /target/etc/fstab
 
 
