@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "This script to create btrfs partition - just a guy linux style"
-echo"Unmount target "
+echo "Unmount target "
 umount /target/boot/efi/
 umount /target/
 
@@ -8,11 +8,11 @@ echo "mount disk and create btrfs subvolumes"
 mount /dev/sda2 /mnt
 cd /mnt
 mv @rootfs/ @
-btrfs mv cr @home
-btrfs mv cr @root
-btrfs mv cr @log
-btrfs mv cr @tmp
-btrfs mv cr @opt
+btrfs su cr @home
+btrfs su cr @root
+btrfs su cr @log
+btrfs su cr @tmp
+btrfs cr @opt
 
 echo "Make directories"
 mkdir -p /target/boot/efi
