@@ -1,0 +1,20 @@
+[Unit]
+Description=PVE Status Daemon
+ConditionPathExists=/usr/bin/pvestatd
+Wants=pve-cluster.service
+After=pve-cluster.service
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+ExecStart=/usr/bin/pvestatd start
+ExecStop=/usr/bin/pvestatd stop
+ExecReload=/usr/bin/pvestatd restart
+PIDFile=/run/pvestatd.pid
+Type=forking
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+

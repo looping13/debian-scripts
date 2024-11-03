@@ -13,3 +13,4 @@ One script to install [Sweet-folders](https://github.com/EliverLara/Sweet-folder
 Adding also some aliases and a bash prompt
 The bash prompt will require a nerd font installed
 
+Proxmox pvestatd.service location is /lib/systemd/system/pvestatd.service 
