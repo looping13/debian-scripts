@@ -1,11 +1,13 @@
 #!/bin/sh
 echo "This script to create btrfs partition - just a guy linux style"
+dev_target=$(df --output=source /target | tail -n +2)
+dev_efi=$(df --output=source /target/boot/efi | tail -n +2)
 echo "Unmount target "
 umount -v /target/boot/efi/
 umount -v /target/
 
 echo "mount disk and create btrfs subvolumes"
-mount -v /dev/sda2 /mnt
+mount -v $dev_target /mnt
 cd /mnt
 mv @rootfs/ @
 btrfs subvolume create @home
@@ -18,7 +20,7 @@ umount -v /mnt/
 umount -v /mnt
 
 echo "Mount /target"
-mount -v -o defaults,subvol=@ /dev/sda2 /target
+mount -v -o defaults,subvol=@ $dev_target /target
 echo "Make directories"
 mkdir -v -p /target/boot/efi
 mkdir -v -p /target/home
@@ -28,17 +30,18 @@ mkdir -v -p /target/tmp
 mkdir -v -p /target/opt
 
 echo "mount subvolumes into /target"
-mount -v -o defaults,subvol=@home /dev/sda2 /target/home
-mount -v -o defaults,subvol=@root /dev/sda2 /target/root
-mount -v -o defaults,subvol=@log /dev/sda2 /target/var/log
-mount -v -o defaults,subvol=@tmp /dev/sda2 /target/tmp
-mount -v -o defaults,subvol=@opt /dev/sda2 /target/opt
+mount -v -o defaults,subvol=@home $dev_target /target/home
+mount -v -o defaults,subvol=@root $dev_target /target/root
+mount -v -o defaults,subvol=@log $dev_target /target/var/log
+mount -v -o defaults,subvol=@tmp $dev_target /target/tmp
+mount -v -o defaults,subvol=@opt $dev_target /target/opt
 
-mount -v /dev/sda1 /target/boot/efi
+mount -v $dev_efi /target/boot/efi
 
 echo " Now change /target/etc/fstab"
+sed -i.bak '/rootfs/s/^/# /' /target/etc/fstab
 echo "Find the UUID of disk"
-disk_uuid=$(blkid -o value /dev/sda2 | head -1)
+disk_uuid=$(blkid -o value $dev_target | head -1)
 echo "append mount points into fstab"
 echo "UUID=$disk_uuid / btrfs defaults,subvol=@ 0 0" >> /target/etc/fstab
 echo "UUID=$disk_uuid /home btrfs defaults,subvol=@home 0 0" >> /target/etc/fstab
@@ -46,6 +49,7 @@ echo "UUID=$disk_uuid /root btrfs defaults,subvol=@root 0 0" >> /target/etc/fsta
 echo "UUID=$disk_uuid /var/log btrfs defaults,subvol=@log 0 0" >> /target/etc/fstab
 echo "UUID=$disk_uuid /tmp btrfs defaults,subvol=@tmp 0 0" >> /target/etc/fstab
 echo "UUID=$disk_uuid /opt btrfs defaults,subvol=@opt 0 0" >> /target/etc/fstab
+
 
 
 
