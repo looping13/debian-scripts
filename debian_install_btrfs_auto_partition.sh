@@ -40,20 +40,12 @@ echo " Now change /target/etc/fstab"
 echo "Find the uuid of disk"
 disk_uuid=$(blkid -o value /dev/sda2 | head -1)
 echo "append mount points into fstab"
-<<<<<<< HEAD
 echo "uuid=$disk_uuid / btrfs defaults,subvol=@ 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /home btrfs defaults,subvol=@home 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /root btrfs defaults,subvol=@root 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /var/log btrfs defaults,subvol=@log 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /tmp btrfs defaults,subvol=@tmp 0 0" >> /target/etc/fstab
 echo "uuid=$disk_uuid /opt btrfs defaults,subvol=@opt 0 0" >> /target/etc/fstab
-=======
-echo "uuid=$disk_uuid / btrfs noatime,compress=zstd,subvol=@ 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /home btrfs noatime,compress=zstd,subvol=@home 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /root btrfs noatime,compress=zstd,subvol=@root 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /var/log btrfs noatime,compress=zstd,subvol=@log 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /tmp btrfs noatime,compress=zstd,subvol=@tmp 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /opt btrfs noatime,compress=zstd,subvol=@opt 0 0" >> /target/etc/fstab
->>>>>>> 6181e6e505a9dd2565ca4bd5feb594913ce7d07b
+
 
 
