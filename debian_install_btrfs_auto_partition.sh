@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "This script to create btrfs partition - just a guy linux style"
-dev_target=$(df --output=source /target | tail -n +2)
-dev_efi=$(df --output=source /target/boot/efi | tail -n +2)
+dev_target=$(df /target | awk 'NR==2 {print $1}')
+dev_efi=$(df /target/boot/efi | awk 'NR==2 {print $1}')
 echo "Unmount target "
 umount -v /target/boot/efi/
 umount -v /target/
