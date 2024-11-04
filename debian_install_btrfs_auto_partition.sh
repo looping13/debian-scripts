@@ -37,15 +37,15 @@ mount -v -o defaults,subvol=@opt /dev/sda2 /target/opt
 mount -v /dev/sda1 /target/boot/efi
 
 echo " Now change /target/etc/fstab"
-echo "Find the uuid of disk"
+echo "Find the UUID of disk"
 disk_uuid=$(blkid -o value /dev/sda2 | head -1)
 echo "append mount points into fstab"
-echo "uuid=$disk_uuid / btrfs defaults,subvol=@ 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /home btrfs defaults,subvol=@home 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /root btrfs defaults,subvol=@root 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /var/log btrfs defaults,subvol=@log 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /tmp btrfs defaults,subvol=@tmp 0 0" >> /target/etc/fstab
-echo "uuid=$disk_uuid /opt btrfs defaults,subvol=@opt 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid / btrfs defaults,subvol=@ 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /home btrfs defaults,subvol=@home 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /root btrfs defaults,subvol=@root 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /var/log btrfs defaults,subvol=@log 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /tmp btrfs defaults,subvol=@tmp 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /opt btrfs defaults,subvol=@opt 0 0" >> /target/etc/fstab
 
 
 

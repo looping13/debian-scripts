@@ -8,10 +8,16 @@ cd ~/Projects/
 rm -rf ~/Projects/candy-icons
 rm -rf ~/Projects/Sweet-folders
 rm -rf ~/Projects/Sweet
+rm -rf ~/Projects/Sweet-Dark
 
 git clone https://github.com/EliverLara/candy-icons.git ~/Projects/candy-icons
 git clone https://github.com/EliverLara/Sweet-folders.git ~/Projects/Sweet-folders
 git clone https://github.com/EliverLara/Sweet.git ~/Projects/Sweet
+wget https://github.com/EliverLara/Sweet/releases/download/v5.0/Sweet-Dark.tar.xz
+wget https://github.com/EliverLara/Sweet/releases/download/v5.0/Sweet-Ambar-Blue-Dark.tar.xz
+
+tar -xvf Sweet-Dark.tar.xz
+tar -xvf Sweet-Ambar-Blue-Dark.tar.xz
 
 #modify the inheritance for Sweet-Rainbow theme
 # sed -i 's/Inherits=/Inherits=candy-icons,/g' ~/Projects/Sweet-folders/Sweet-Rainbow/index.theme
@@ -20,13 +26,17 @@ git clone https://github.com/EliverLara/Sweet.git ~/Projects/Sweet
 echo "## Uninstalling old files for all users"
 sudo rm -rf /usr/share/icons/candy*
 sudo rm -rf /usr/share/icons/Sweet-Rainbow
-sudo rm -rf /usr/share/themes/Sweet
+sudo rm -rf /usr/share/themes/Sweet*
+
+
 
 #install new for all users
 echo "## Installing new files for all users"
 sudo mv candy* /usr/share/icons/    # Install to all users
 sudo mv Sweet-folders/Sweet-Rainbow /usr/share/icons/ 
 sudo mv Sweet /usr/share/themes/ 
+sudo mv Sweet-Dark /usr/share/themes/ 
+sudo mv Sweet-Ambar-Blue-Dark /usr/share/themes/ 
 
 # fixing some icons symlink into candy-icons
 echo "## Fixing candy-icons symlinks"
@@ -46,8 +56,8 @@ rm -rf ~/Projects/Sweet*
 # Set themes in Gnome
 echo "## Setting the themes for Gnome"
 # gsettings set org.gnome.desktop.interface icon-theme Sweet-Rainbow
-# gsettings set org.gnome.desktop.interface gtk-theme Sweet
-# gsettings set org.gnome.desktop.wm.preferences theme Sweet
+# gsettings set org.gnome.desktop.interface gtk-theme Sweet-Dark
+# gsettings set org.gnome.desktop.wm.preferences theme Sweet-Dark
 
 echo "################################################################"
 echo "###################    T H E   E N D      ######################"
