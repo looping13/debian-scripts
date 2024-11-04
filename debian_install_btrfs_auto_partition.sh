@@ -1,8 +1,20 @@
 #!/bin/sh
+## before installing the base system
+## select the step run a shell
+## when in shell, cd to /tmp and wget this script then execute
+## when done, then exit shell and continue installation
+
 echo "A script to create btrfs partition - just a guy linux style"
+## Find devices
 dev_target=$(df /target | awk 'NR==2 {print $1}')
 dev_efi=$(df /target/boot/efi | awk 'NR==2 {print $1}')
-defaults="noatime,noacl,compress=zstd:5,autodefrag"
+
+## Define mount options for btrfs filesystem. For VM
+## Note: when using a ssd, append these options to the list: ssd,discard
+## Read: https://thelinuxcode.com/btrfs-filesystem-mount-options/
+## on compression https://thelinuxcode.com/enable-btrfs-filesystem-compression/
+
+mount_options_btrfs="noatime,noacl,compress=zstd:5,autodefrag"
 echo "Unmount /target"
 umount /target/boot/efi/
 umount /target/
@@ -21,7 +33,7 @@ btrfs subvolume create @opt
 
 
 echo "Mount /target"
-mount -o  $defaults,subvol=@ $dev_target /target
+mount -o $mount_options_btrfs,subvol=@ $dev_target /target
 echo "Make directories"
 mkdir -p /target/boot/efi
 mkdir -p /target/home
@@ -31,25 +43,26 @@ mkdir -p /target/tmp
 mkdir -p /target/opt
 
 echo "Mount subvolumes into /target"
-mount -o  $defaults,subvol=@home $dev_target /target/home
-mount -o  $defaults,subvol=@root $dev_target /target/root
-mount -o  $defaults,subvol=@log $dev_target /target/var/log
-mount -o  $defaults,subvol=@tmp $dev_target /target/tmp
-mount -o  $defaults,subvol=@opt $dev_target /target/opt
+mount -o $mount_options_btrfs,subvol=@home $dev_target /target/home
+mount -o $mount_options_btrfs,subvol=@root $dev_target /target/root
+mount -o $mount_options_btrfs,subvol=@log $dev_target /target/var/log
+mount -o $mount_options_btrfs,subvol=@tmp $dev_target /target/tmp
+mount -o $mount_options_btrfs,subvol=@opt $dev_target /target/opt
 
 mount $dev_efi /target/boot/efi
 
 echo " Now change /target/etc/fstab"
+## comment the line containing "rootfs" in fstab (do a .bak first)
 sed -i.bak '/rootfs/s/^/# /' /target/etc/fstab
 echo "Find the UUID of disk"
 disk_uuid=$(blkid -o value $dev_target | head -1)
 echo "append mount points into fstab"
-echo "UUID=$disk_uuid / btrfs  $defaults,subvol=@ 0 0" >> /target/etc/fstab
-echo "UUID=$disk_uuid /home btrfs  $defaults,subvol=@home 0 0" >> /target/etc/fstab
-echo "UUID=$disk_uuid /root btrfs  $defaults,subvol=@root 0 0" >> /target/etc/fstab
-echo "UUID=$disk_uuid /var/log btrfs  $defaults,subvol=@log 0 0" >> /target/etc/fstab
-echo "UUID=$disk_uuid /tmp btrfs  $defaults,subvol=@tmp 0 0" >> /target/etc/fstab
-echo "UUID=$disk_uuid /opt btrfs  $defaults,subvol=@opt 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid / btrfs $mount_options_btrfs,subvol=@ 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /home btrfs $mount_options_btrfs,subvol=@home 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /root btrfs $mount_options_btrfs,subvol=@root 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /var/log btrfs $mount_options_btrfs,subvol=@log 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /tmp btrfs $mount_options_btrfs,subvol=@tmp 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /opt btrfs $mount_options_btrfs,subvol=@opt 0 0" >> /target/etc/fstab
 
 echo "*****************************************************"
 cat /target/etc/fstab | tail -n 12
@@ -63,5 +76,4 @@ echo "*****************************************************"
 echo "BTRFS partitioning DONE ! just unmount /mnt to be safe with umount /mnt/"
 echo "then exit and resume installation of base system"
 # umount /mnt/
-
 
