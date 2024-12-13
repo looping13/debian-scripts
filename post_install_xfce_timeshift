@@ -1,9 +1,11 @@
 sudo apt install \
 build-essentials \
 gawk \
-inoty-tools
+inotify-tools
 git \
 xfce4 xfce4-goodies lightdm \
 firefox-esr \
 timeshift \
 gvfs-backends smbclient
+
+git clone https://github.com/Antynea/grub-btrfs.git
