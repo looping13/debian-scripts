@@ -2,17 +2,22 @@
 
 # Define the packages in separate arrays with the new names
 declare -a utils=("curl" "git" "vim")
-declare -a browser=("firefox" "chromium")
-declare -a fileManager=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
+declare -a browsers=("brave" "chromium")
+declare -a fileManagers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
+declare -a graphics=("gimp" "flameshot" "eog" "sxiv" "qimgv" "inkscape" "scrot")
+declare -a terminals=("alacritty" "gnome-terminal" "kitty" "konsole" "terminator" "xfce4-terminal")
+declare -a textEditors=("geany" "kate" "gedit" "l3afpad" "mousepad" "pluma")
+declare -a multimedia=("mpv" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui")
+declare -a utilities=( "gparted" "gnome-disk-utility" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" "whois" "tree" "btop" "htop" "bat" "brightnessctl" "redshift" ) 
 
 # Array of arrays names
-package_lists=("utils" "browser" "fileManager")
+package_lists=("utils" "browsers" "fileManagers" "graphics" "terminals" "textEditors" "multimedia" "utilities")
 
 
 #Declare colors
 red='\033[0;31m'
 nc='\033[0m'
-yellow='\033[1;33m'
+yellow='\e[38;5;220m'
 
 #checks user
 runas=$(whoami)
@@ -66,7 +71,7 @@ fi
 
 # Print the selected packages
 printf "${yellow}You selected the following packages for installation:${nc}\n"
-echo "$selected_packages"
+printf "${yellow}$selected_packages${nc}\n"
 
 apt-get update -y && \
 apt-get install $selected_packages
