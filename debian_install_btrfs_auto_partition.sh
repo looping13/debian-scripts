@@ -30,7 +30,7 @@ btrfs subvolume create @root
 btrfs subvolume create @log
 btrfs subvolume create @tmp
 btrfs subvolume create @opt
-# btrfs subvolume create @snapshots
+btrfs subvolume create @snapshots
 
 # btrfs subvolume list /mnt
 
@@ -44,7 +44,7 @@ mkdir -p /target/root
 mkdir -p /target/var/log
 mkdir -p /target/tmp
 mkdir -p /target/opt
-#mkdir -p /target/.snapshots
+mkdir -p /target/.snapshots
 
 echo "Mount subvolumes into /target"
 mount -o $mount_options_btrfs,subvol=@home $dev_target /target/home
@@ -52,7 +52,7 @@ mount -o $mount_options_btrfs,subvol=@root $dev_target /target/root
 mount -o $mount_options_btrfs,subvol=@log $dev_target /target/var/log
 mount -o $mount_options_btrfs,subvol=@tmp $dev_target /target/tmp
 mount -o $mount_options_btrfs,subvol=@opt $dev_target /target/opt
-#mount -o $mount_options_btrfs,subvol=@snapshots $dev_target /target/.snapshots
+mount -o $mount_options_btrfs,subvol=@snapshots $dev_target /target/.snapshots
 
 mount $dev_efi /target/boot/efi
 
@@ -68,7 +68,7 @@ echo "UUID=$disk_uuid /root btrfs $mount_options_btrfs,subvol=@root 0 0" >> /tar
 echo "UUID=$disk_uuid /var/log btrfs $mount_options_btrfs,subvol=@log 0 0" >> /target/etc/fstab
 echo "UUID=$disk_uuid /tmp btrfs $mount_options_btrfs,subvol=@tmp 0 0" >> /target/etc/fstab
 echo "UUID=$disk_uuid /opt btrfs $mount_options_btrfs,subvol=@opt 0 0" >> /target/etc/fstab
-#echo "UUID=$disk_uuid /.snapshots btrfs $mount_options_btrfs,subvol=@snapshots 0 0" >> /target/etc/fstab
+echo "UUID=$disk_uuid /.snapshots btrfs $mount_options_btrfs,subvol=@snapshots 0 0" >> /target/etc/fstab
 
 echo "*****************************************************"
 cat /target/etc/fstab | tail -n 12
