@@ -2,12 +2,12 @@
 
 # Define the packages in separate arrays with the new names
 declare -a utils=("curl" "git" "vim")
-declare -a browsers=("brave" "chromium")
+declare -a browsers=("firefox-esr" "chromium")
 declare -a fileManagers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
 declare -a graphics=("gimp" "flameshot" "eog" "sxiv" "qimgv" "inkscape" "scrot")
 declare -a terminals=("alacritty" "gnome-terminal" "kitty" "konsole" "terminator" "xfce4-terminal")
 declare -a textEditors=("geany" "kate" "gedit" "l3afpad" "mousepad" "pluma")
-declare -a multimedia=("mpv" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui")
+declare -a multimedia=("mpv" "vlc" "audacity" "kdenlive" "amberol" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui")
 declare -a utilities=( "gparted" "gnome-disk-utility" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" "whois" "tree" "btop" "htop" "bat" "brightnessctl" "redshift" ) 
 
 # Array of arrays names
