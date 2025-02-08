@@ -6,18 +6,18 @@ cd ~/Downloads
 
 #Uninstall previous install
 #rm -rf ~/.icons/BeautyLine                   # Remove from local users
-sudo rm -rf /usr/share/icons/BeautyLine     # Remove from all users
+sudo rm -rf /usr/share/icons/BeautyLine       # Remove from all users
 
 
 #Extract BeautyLine 
-tar -xvf BeautyLine.tar.gz                # extract `BeautyLine.tar.gz`
+tar -xvf BeautyLine.tar.gz                    # extract `BeautyLine.tar.gz`
 
 #modify the inheritance for BeautyLine theme
 sed -i 's/Inherits=/Inherits=candy-icons,/g' ~/Downloads/BeautyLine/index.theme
 
 #Install BeautyLine 
-#mv BeautyLine  ~/.icons/                 # Install to local users
-sudo mv BeautyLine /usr/share/icons/    # Install to all users
+#mv BeautyLine  ~/.icons/                     # Install to local users
+sudo mv BeautyLine /usr/share/icons/          # Install to all users
 
 rm -rf BeautyLine
 

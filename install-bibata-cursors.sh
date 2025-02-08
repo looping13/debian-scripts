@@ -2,6 +2,7 @@
 
 #Download from this location
 #https://github.com/ful1e5/Bibata_Cursor/releases
+wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata.tar.xz /home/olivier/Downloads/Bibata.tar.xz
 cd ~/Downloads
 
 #Uninstall previous install

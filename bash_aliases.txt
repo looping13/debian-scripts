@@ -8,7 +8,8 @@ alias remove='sudo nala remove'
 
 
 ## Reboot
-alias reboot='sudo reboot now'
+alias reboot='sudo systemctl reboot'
+alias poweroff='sudo systemctl poweroff'
 
 ## Meteo
 alias meteo='curl wttr.in/Paris'
@@ -19,7 +20,13 @@ if  [ -x "$(command -v exa)" ]; then
   alias la='exa -a --icons'
   alias ll='exa -al --header --icons --git'
 else
+ # sudo pacman -S exa
   echo 'Error: exa is not installed.' >&2
   exit 1
 fi
 
+# in your .bashrc/.zshrc/*rc
+alias bathelp='batcat --plain --color=auto --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}

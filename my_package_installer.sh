@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the packages in separate arrays with the new names
-declare -a utils=("curl" "git" "vim")
+declare -a utils=("curl" "git" "vim" "exa" "bat")
 declare -a browsers=("firefox-esr" "chromium")
 declare -a fileManagers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
 declare -a graphics=("gimp" "flameshot" "eog" "sxiv" "qimgv" "inkscape" "scrot")
