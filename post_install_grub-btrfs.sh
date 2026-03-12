@@ -19,3 +19,4 @@ systemctl enable grub-btrfsd.service
 systemctl start grub-btrfsd.service
 
 btrfs subvolume snapshot -r / /.snapshots/post_grub-btrfs
+grub-mkconfig
