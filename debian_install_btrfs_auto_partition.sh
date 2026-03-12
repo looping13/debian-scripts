@@ -14,7 +14,7 @@ dev_efi=$(df /target/boot/efi | awk 'NR==2 {print $1}')
 ## Note: when using a ssd, append these options to the list: ssd,discard
 ## Read: https://thelinuxcode.com/btrfs-filesystem-mount-options/
 ## on compression https://thelinuxcode.com/enable-btrfs-filesystem-compression/
-mount_options_btrfs="noatime,noacl,compress=zstd:5,autodefrag"
+mount_options_btrfs="noatime,acl,compress=zstd:5,autodefrag"
 
 # Umount existing mounts
 echo "Unmount /target"
