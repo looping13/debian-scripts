@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Snapper and required tools
-sudo apt install -y snapper btrfs-assistant inotify-tools git make
+sudo apt install -y snapper inotify-tools git make
 
 # Create Snapper config for root (@) and home (@home) subvolumes
 sudo snapper -c root create-config /
@@ -33,3 +33,5 @@ sudo systemctl status snapper-cleanup.timer
 #and disable them for home to avoid excessive snapshot clutter:
 
 sudo snapper -c home set-config TIMELINE_CREATE=no
+
+# install btrfs-assistant after a DE is installed.
