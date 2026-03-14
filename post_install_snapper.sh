@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Snapper and required tools
-sudo apt install -y snapper btrfs-assistant inotify-tools git make
+sudo apt install -y snapper inotify-tools make
 
 # Create Snapper config for root (@) and home (@home) subvolumes
 sudo snapper -c root create-config /
