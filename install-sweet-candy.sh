@@ -13,8 +13,8 @@ rm -rf ~/Projects/Sweet-Dark
 git clone https://github.com/EliverLara/candy-icons.git ~/Projects/candy-icons
 git clone https://github.com/EliverLara/Sweet-folders.git ~/Projects/Sweet-folders
 git clone https://github.com/EliverLara/Sweet.git ~/Projects/Sweet
-wget https://github.com/EliverLara/Sweet/releases/download/v5.0/Sweet-Dark.tar.xz
-wget https://github.com/EliverLara/Sweet/releases/download/v5.0/Sweet-Ambar-Blue-Dark.tar.xz
+wget https://github.com/EliverLara/Sweet/releases/download/v6.0/Sweet-Dark.tar.xz
+wget https://github.com/EliverLara/Sweet/releases/download/v6.0/Sweet-Ambar-Blue-Dark.tar.xz
 
 tar -xvf Sweet-Dark.tar.xz
 tar -xvf Sweet-Ambar-Blue-Dark.tar.xz
