@@ -33,3 +33,5 @@ sudo systemctl status snapper-cleanup.timer
 #and disable them for home to avoid excessive snapshot clutter:
 
 sudo snapper -c home set-config TIMELINE_CREATE=no
+
+# install btrfs-assistant after a DE is installed.
