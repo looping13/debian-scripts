@@ -1,5 +1,10 @@
 #!/bin/sh
-echo 'deb http://download.opensuse.org/repositories/home:/AvengeMedia:/danklinux/Debian_Unstable/ /' | sudo tee /etc/apt/sources.list.d/home:AvengeMedia:danklinux.list
-curl -fsSL https://download.opensuse.org/repositories/home:AvengeMedia:danklinux/Debian_Unstable/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_AvengeMedia_danklinux.gpg > /dev/null
+# Add DankLinux repository
+curl -fsSL https://download.opensuse.org/repositories/home:AvengeMedia:danklinux/Debian_Unstable/Release.key | \
+  sudo gpg --dearmor -o /etc/apt/keyrings/danklinux.gpg
+echo "deb [signed-by=/etc/apt/keyrings/danklinux.gpg] https://download.opensuse.org/repositories/home:/AvengeMedia:/danklinux/Debian_Unstable/ /" | \
+  sudo tee /etc/apt/sources.list.d/danklinux.list
 sudo apt update
-sudo apt install quickshell
+
+# Install stable packages
+# sudo apt install quickshell niri
